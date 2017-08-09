@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nick_name')->comment('昵称');
             $table->char('mobile')->comment('手机号码');
             $table->string('email')->comment('邮箱');
+            $table->integer('location_id')->comment('地区ID');
             $table->string('password')->comment('密码');
             $table->rememberToken()->comment('忘记密码toke');
             $table->timestamps();

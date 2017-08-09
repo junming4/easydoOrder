@@ -187,7 +187,10 @@ return [
         Collective\Html\HtmlServiceProvider::class, //html构建器
         Jenssegers\Mongodb\MongodbServiceProvider::class, //mongodb 操作器
         VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class, //LaravelQueueRabbitMQ
-
+        /**
+         * 自己创建的
+         */
+        App\Providers\AppBindServiceProvider::class, //绑定仓库
 
     ],
 

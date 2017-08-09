@@ -46,3 +46,5 @@
     php make:job TestJob 目录在 job中
     php artisan queue:table
     # easydoOrder
+#共享购物车数据，
+    
