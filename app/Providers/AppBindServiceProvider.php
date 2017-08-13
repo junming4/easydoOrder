@@ -41,7 +41,7 @@ class AppBindServiceProvider extends ServiceProvider
             , 'App\Repositories\User\UserRepository');//用户表
         $this->app->bind('App\Repositories\TeamShop\TeamShopContract',
             'App\Repositories\TeamShop\TeamShopRepository');//共享购物车
-        $this->app->bind('App\Repositories\TeamShopExtra\ShopCartContract',
-            'App\Repositories\TeamShopExtra\ShopCartRepository');//共享购物车序列
+        $this->app->bind('App\Repositories\TeamShopExtra\TeamShopExtraContract',
+            'App\Repositories\TeamShopExtra\TeamShopExtraRepository');//共享购物车序列
     }
 }

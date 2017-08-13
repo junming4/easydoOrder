@@ -5,7 +5,7 @@ namespace App\Repositories\TeamShopExtra;
 
 use App\Models\TeamShopExtra;
 
-class TeamShopExtraRepository implements ShopCartContract
+class TeamShopExtraRepository implements TeamShopExtraContract
 {
 
     /**

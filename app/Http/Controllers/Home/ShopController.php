@@ -6,13 +6,13 @@ use App\Http\Requests\ShopCreateRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShopExtraCreateRequest;
 use App\Repositories\TeamShop\TeamShopContract;
-use App\Repositories\TeamShopExtra\ShopCartContract;
+use App\Repositories\TeamShopExtra\TeamShopExtraContract;
 
 class ShopController extends Controller
 {
     protected $teamShopContract;
     protected $teamShopExtraContract;
-    public function __construct(TeamShopContract $teamShopContract, ShopCartContract $teamShopExtraContract)
+    public function __construct(TeamShopContract $teamShopContract, TeamShopExtraContract $teamShopExtraContract)
     {
         $this->teamShopContract = $teamShopContract;
         $this->teamShopExtraContract = $teamShopExtraContract;

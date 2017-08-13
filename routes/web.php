@@ -53,10 +53,7 @@
 Route::group(['namespace' => 'Home'], function ($route) {
     $route->post('shop/create',['as'=>'create','uses' => 'ShopController@create']);
     $route->post('shop/createExtra',['as'=>'create','uses' => 'ShopController@createShopExtraInfo']);
-    $route->get('/',function (){
-        $row = ShoppingCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
-        echo $rawId = $row->rawId();
-    });
+    $route->post('shop/cart/add',['uses' => 'ShopCartController@create']);
 });
 
 //Auth::routes();
