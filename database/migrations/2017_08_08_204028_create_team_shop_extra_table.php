@@ -20,6 +20,7 @@ class CreateTeamShopExtraTable extends Migration
             $table->integer('store_id')->comment('店铺ID');
             $table->integer('goods_id')->comment('商品ID');
             $table->integer('goods_num')->comment('商品数量');
+            $table->decimal('price', 10, 2)->comment('商品价格');
             $table->integer('user_id')->comment('用户ID');
             $table->timestamps();
             $table->comment = '共享购物车附表';

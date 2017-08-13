@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+//Route::get('/', function () {
     //return view('welcome');
     //return view('vue');
     //$res = \App\Models\User::find(2);
@@ -32,25 +32,33 @@ Route::get('/', function () {
         $this->dispatch(new \App\Jobs\TestJob());
     }*/
 
-    return "wellcome ";
-});
+  //  return "wellcome ";
+//});
 
-Route::get('/test','Home\IndexController@index');
+//Route::get('/test','Home\IndexController@index');
 
-Route::get('/isEmail',function (){
+/*Route::get('/isEmail',function (){
    $res =  isEmail('2284876299@qq.com');
    if($res) {
        return "ok";
    }else{
        return "no";
    }
-});
-
-
-/*Route::group(['namespace' => 'Home'], function ($route) {
-    $route->get('/test',['as'=>'index','uses' => 'IndexController@index']);
 });*/
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+//前端数据
+Route::group(['namespace' => 'Home'], function ($route) {
+    $route->post('shop/create',['as'=>'create','uses' => 'ShopController@create']);
+    $route->post('shop/createExtra',['as'=>'create','uses' => 'ShopController@createShopExtraInfo']);
+    $route->get('/',function (){
+        $row = ShoppingCart::add(37, 'Item name', 5, 100.00, ['color' => 'red', 'size' => 'M']);
+        echo $rawId = $row->rawId();
+    });
+});
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

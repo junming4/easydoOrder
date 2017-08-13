@@ -27,17 +27,21 @@ class AppBindServiceProvider extends ServiceProvider
         $this->_registerBindings();
     }
 
+
     /**
-     * 用户表
+     * _registerBindings
      *
-     * @auth xiaojunming<xiaojunming@eelly.net>
-     * @since 2017
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月10日
      */
     private function _registerBindings()
     {
+
         $this->app->bind('App\Repositories\User\UserContract'
             , 'App\Repositories\User\UserRepository');//用户表
-        //$this->app->bind('App\Repositories\Role\RoleContract', 'App\Repositories\Role\RoleRepository');//用户表
-        //$this->app->bind('App\Repositories\Permission\PermissionContract', 'App\Repositories\Permission\PermissionRepository');//权限表
+        $this->app->bind('App\Repositories\TeamShop\TeamShopContract',
+            'App\Repositories\TeamShop\TeamShopRepository');//共享购物车
+        $this->app->bind('App\Repositories\TeamShopExtra\ShopCartContract',
+            'App\Repositories\TeamShopExtra\ShopCartRepository');//共享购物车序列
     }
 }

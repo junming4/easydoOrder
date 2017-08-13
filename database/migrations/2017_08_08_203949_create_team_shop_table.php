@@ -20,8 +20,10 @@ class CreateTeamShopTable extends Migration
             $table->string('uuid')->comment('共享购物车的唯一ID');
             $table->integer('store_id')->comment('店铺ID');
             $table->tinyInteger('is_see')->comment('其他人是否可以查看，0不能，1表示可以');
+            $table->decimal('price',10,2)->comment('每人点餐价格');
             $table->text('team_ids')->comment('团队其他人的id,使用","分开');
             $table->integer('team_time')->comment('团餐时间');
+            $table->tinyInteger('status')->comment('状态，0:未拼单,1:成功,2:取消，3：过期');
             //可以有其他东西
             $table->timestamps();
             $table->comment = '共享购物车';

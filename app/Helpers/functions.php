@@ -32,12 +32,14 @@ if (!function_exists('isMobile')) {
 
 
 if (!function_exists('isEmail')) {
+
     /**
-     * 是否是邮箱
+     * 是否是邮件
+     *
      * @param $email
      * @return bool
-     * @auth xiaojunming<xiaojunming@eelly.net>
-     * @since 2017/06/10
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月10日
      */
     function isEmail($email): bool
     {

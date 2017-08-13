@@ -16,6 +16,7 @@
         "laravelcollective/html": "^5.4",
         "latrell/swagger": "dev-master",
         "milon/barcode": "^5.3",
+        "overtrue/laravel-shopping-cart": "~2.0",
         "predis/predis": "^1.1",
         "tamayo/laravel-scout-elastic": "^3.0",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "5.4",
