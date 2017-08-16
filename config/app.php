@@ -187,7 +187,7 @@ return [
         Collective\Html\HtmlServiceProvider::class, //html构建器
         Jenssegers\Mongodb\MongodbServiceProvider::class, //mongodb 操作器
         VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class, //LaravelQueueRabbitMQ
-        Overtrue\LaravelShoppingCart\ServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         /**
          * 自己创建的
          */
@@ -244,7 +244,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
-        'ShoppingCart' => Overtrue\LaravelShoppingCart\Facade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 

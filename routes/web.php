@@ -35,7 +35,14 @@
   //  return "wellcome ";
 //});
 
-//Route::get('/test','Home\IndexController@index');
+Route::get('/test',function (){
+
+    Cart::add('192ao12', 'Product 1', 1, 9.99);
+    Cart::add('192ao12', 'Product 1', 3, 9.9, ['size' => 'large']);
+    Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);
+    dd(Cart::content());
+    //::add()
+});
 
 /*Route::get('/isEmail',function (){
    $res =  isEmail('2284876299@qq.com');
@@ -53,7 +60,7 @@
 Route::group(['namespace' => 'Home'], function ($route) {
     $route->post('shop/create',['as'=>'create','uses' => 'ShopController@create']);
     $route->post('shop/createExtra',['as'=>'create','uses' => 'ShopController@createShopExtraInfo']);
-    $route->post('shop/cart/add',['uses' => 'ShopCartController@create']);
+    $route->post('shop/cart/add',['as'=>'create','uses' => 'ShopCartController@create']);
 });
 
 //Auth::routes();

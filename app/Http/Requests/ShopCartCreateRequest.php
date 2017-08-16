@@ -67,11 +67,11 @@ class ShopCartCreateRequest extends FormRequest
     public function fillData()
     {
         return [
-            $this->goods_id,
-            $this->goods_name,
-            $this->goods_num,
-            $this->price,
-            [], //todo 额外数据为空
+            'goods_id' => $this->goods_id,
+            'goods_name' => $this->goods_name,
+            'goods_num' => $this->goods_num,
+            'price' => $this->price,
+            'options' => [], //todo 额外数据为空
         ];
     }
 }
