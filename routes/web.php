@@ -37,6 +37,10 @@
 
 Route::get('/test',function (){
 
+    Mail::to('13512719787@163.com')->send(new \App\Mail\SendEmail('13512719787@163.com','base'));
+
+    exit;
+
     Cart::add('192ao12', 'Product 1', 1, 9.99);
     Cart::add('192ao12', 'Product 1', 3, 9.9, ['size' => 'large']);
     Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);

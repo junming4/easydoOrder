@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Repositories\SendEmail\SendEmailContract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -32,14 +33,17 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $sendEmailContract;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SendEmailContract $sendEmailContract)
     {
         $this->middleware('guest');
+        $this->sendEmailContract = $sendEmailContract;
     }
 
 
@@ -49,13 +53,13 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-        $email = $request->get('email','', 'trim');
-        $code = $request->get('code', 0, 'int');
+        $email = $request->get('email','');
+        $type = $request->get('type', '');
+        $code = $request->get('code', 0);
 
         if(!isEmail($email)) return Redirect::back()->withInput()->withErrors('邮箱不正确！');
 
-        if (($status = (int)$this->smsLogContract->checkCode($email, $code)) <= 0) {
-
+        if (($status = (int)$this->sendEmailContract->checkCode($email,$type, $code)) <= 0) {
             if ($status === -1) {
                 return Redirect::back()->withInput()->withErrors('您的验证码不存在，请重新输入');
             } elseif ($status === -2) {
@@ -66,7 +70,6 @@ class RegisterController extends Controller
                 return Redirect::back()->withInput()->withErrors('您的验证码可以已经过期了，请重新再发验证码!');
             }
         }
-
 
         event(new Registered($user = $this->create($request->all())));
 
@@ -85,7 +88,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'user_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);

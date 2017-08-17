@@ -1,12 +1,37 @@
 <?php
 
-namespace App\Repositories\TeamShop;
+namespace App\Repositories\SendEmail;
 
-use App\Models\TeamShop;
 
-interface TeamShopContract
+/**
+ * 描述一下
+ *
+ * @author  肖俊明<xiaojunming@eelly.net>
+ * @since 2017年08月16日
+ */
+interface SendEmailContract
 {
-    public function create(array $input): bool;
+    /**
+     * setCode
+     *
+     * @param string $email
+     * @param string $type
+     * @param int $code
+     * @return bool
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月16日
+     */
+    public function setCode(string $email, string $type, int $code): bool;
 
-    public function find(int $ts_id);
+    /**
+     * checkCode
+     *
+     * @param string $email
+     * @param string $type
+     * @param int $code
+     * @return int
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月16日
+     */
+    public function checkCode(string $email, string $type, int $code): int;
 }
