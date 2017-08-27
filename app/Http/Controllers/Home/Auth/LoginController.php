@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,4 +36,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+
+    /**
+     * 登录
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月23日
+     */
+    public function showLoginForm()
+    {
+        return view('home.auth.login');
+    }
+
 }

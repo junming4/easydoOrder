@@ -62,9 +62,22 @@ Route::get('/test',function (){
 
 //前端数据
 Route::group(['namespace' => 'Home'], function ($route) {
+
+    $route->get('/','IndexController@index');
     $route->post('shop/create',['as'=>'create','uses' => 'ShopController@create']);
     $route->post('shop/createExtra',['as'=>'create','uses' => 'ShopController@createShopExtraInfo']);
     $route->post('shop/cart/add',['as'=>'create','uses' => 'ShopCartController@create']);
+
+    $route->get('store/{id?}',['as'=>'store','uses'=>'StoreController@index']);
+
+    //注册
+    $route->get('register','Auth\RegisterController@showRegistrationForm');
+    $route->post('register','Auth\RegisterController@register');
+    //登录
+    $route->get('login', ['as' => 'member.login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    $route->post('login', ['as' => 'member.login', 'uses' => 'Auth\LoginController@login']);
+
+
 });
 
 //Auth::routes();

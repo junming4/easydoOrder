@@ -45,5 +45,9 @@ class AppBindServiceProvider extends ServiceProvider
             'App\Repositories\TeamShopExtra\TeamShopExtraRepository');//共享购物车序列
         $this->app->bind('App\Repositories\SendEmail\SendEmailContract',
             'App\Repositories\SendEmail\SendEmailRepository');//发送验证码类
+        $this->app->bind('App\Repositories\Store\StoreContract',
+            'App\Repositories\Store\StoreRepository');//店铺类
+        $this->app->bind('App\Repositories\Goods\GoodsContract',
+            'App\Repositories\Goods\GoodsRepository');//商品类
     }
 }

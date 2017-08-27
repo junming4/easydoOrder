@@ -24,6 +24,7 @@ class CreateStoreTable extends Migration
             $table->tinyInteger('online')->comment('在线时间,0:表示周一到周五,1:表示全年营业,2:除节假日之外');
             $table->integer('start_time')->comment('营业开始时间');
             $table->integer('end_time')->comment('营业结束时间');
+            $table->text('book_time')->comment('可以订餐时间，使用json格式保存');
             $table->string('view_img')->comment('背景图');
             $table->string('store_logo')->comment('店铺logo');
             $table->text('banner')->comment('店铺轮播图，使用json保存，暂时定义最多5张');

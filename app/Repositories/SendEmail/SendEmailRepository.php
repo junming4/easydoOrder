@@ -79,6 +79,7 @@ class SendEmailRepository implements SendEmailContract
     {
         $this->setKey($email, $type);
         $key = $this->getKey();
+
         if (!Cache::get($key)) {
             return -1; //验证码不存在
         }
@@ -86,7 +87,7 @@ class SendEmailRepository implements SendEmailContract
         if ($tmpCode != $code) {
             return -2; //验证码不正确
         }
-        Cache::forget($key); //返回true并且删除数据
+        //Cache::forget($key); //返回true并且删除数据
         return 1;
     }
 }

@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     protected $sendEmailContract;
 
@@ -44,6 +44,19 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->sendEmailContract = $sendEmailContract;
+    }
+
+    /**
+     * 注册展示页
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月21日
+     *
+     */
+    public function showRegistrationForm()
+    {
+        return view('home.auth.register');
     }
 
 
@@ -103,9 +116,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'user_name' => $data['user_name'],
+            'nick_name' => substr($data['email'], 0,10),
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'mobile' => '',
+            'location_id' => 1 //默认广州好点
         ]);
     }
 }

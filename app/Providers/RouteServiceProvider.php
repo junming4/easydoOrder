@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapMemberRoutes();
 
         //
     }
@@ -54,6 +55,20 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+
+    /**
+     * 会员路由
+     *
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月22日
+     */
+    protected function mapMemberRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/member.php'));
     }
 
     /**

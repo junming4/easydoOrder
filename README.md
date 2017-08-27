@@ -47,4 +47,7 @@
     php artisan queue:table
     # easydoOrder
 #共享购物车数据，
+
+php artisan make:migration create_collection_table
+创建表
     

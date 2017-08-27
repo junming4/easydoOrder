@@ -192,6 +192,7 @@ return [
          * 自己创建的
          */
         App\Providers\AppBindServiceProvider::class, //绑定仓库
+        Jenssegers\Date\DateServiceProvider::class, //日期插件
 
     ],
 
@@ -247,6 +248,8 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'UUID' => Webpatser\Uuid\Uuid::class,
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 
