@@ -9,9 +9,11 @@
         <div class="ucenter-wrap clear">
             @include('member.partials.left')
             <div class="mybalanceContainer clear">
+                {!! Form::open(['route' => ['member.cart.store'], 'class' => 'form-horizontal','id'=>'createCart','role' => 'form','method' => 'post']) !!}
                 <div class="grouporderWrap">
                     <div class="gdDinnertime">
                         <strong>用餐时间：今天，12:30am</strong>
+                        <input type="hidden" name="team_time" value="{{ $team_time }}" >
                         <span><a href="javascript:void(0)" class="gd-dinner-time-editor">更改</a></span>
                     </div>
                     <div class="expenRestriction">
@@ -21,16 +23,14 @@
                         </div>
                         <div class="expenresboxlist">
                             <ul>
-                                <li class="expbliotherCur"><a href="#" class="epblbrrfire">没有限制</a></li>
-                                <li><a href="#">￥15</a></li>
-                                <li><a href="#">￥20</a></li>
-                                <li><a href="#">￥30</a></li>
+                                <li class="expbliotherCur"><a href="javascript:void(0);" class="epblbrrfire" data-price="0">没有限制</a></li>
+                                <li><a href="javascript:void(0);" data-price="15">￥15</a></li>
+                                <li><a href="javascript:void(0);" data-price="20">￥20</a></li>
+                                <li><a href="javascript:void(0);" data-price="30">￥30</a></li>
                                 <li class="expbliborr">
-                                    <a href="#" class="epblbrrlast">其他</a>
+                                    <a href="javascript:void(0);" class="epblbrrlast">其他</a>
                                     <div class="expbformbox">
-                                        <form>
-                                            <input type="text" placeholder="￥35" class="expbformbtext" name="price" value="0"/>
-                                        </form>
+                                            <input type="text" placeholder="￥35" class="expbformbtext"  id="expbformbtext" name="price" value=""/>
                                     </div>
                                 </li>
                             </ul>
@@ -39,26 +39,29 @@
                     <div class="gprdimember">
                         <div class="gprdidd">
                             <span class="check-status checkboxCur"></span>
-                            <input type="hidden" name="" value="0" />
+                            <input type="hidden" name="is_see" value="1" />
                             <strong>允许团队其他成员可以查看整个购物车</strong>
                         </div>
                     </div>
                     <div class="gprdishareCont">
                         <div class="gprdisharectop">将此链接并分享给其他成员，以将产品添加到团体购物车</div>
                         <div class="gprdisharecbom">
-                            <input type="text" value="https://www.trycaviar.com/carts/cart-9qMs4N" class="gprbomsharetext copy-values" />
+                            <input type="text" value="{{ $url }}"  class="gprbomsharetext copy-values" />
+                            <input type="hidden" name="uuid" value="{{ $uuid }}">
+                            <input type="hidden" name="store_id" value="{{ $store_id }}">
                             <div class="gprbomshareBtn">
-                                <a href="javascript:;" class="copy-link">复制</a>
+                                <a href="javascript:void(0);" class="copy-link">复制</a>
                             </div>
                         </div>
                     </div>
                     <div class="guporingbar">
                         <div class="guingbarright">
-                            <a href="javascript:;" class="group-order-remove">删除</a>
-                            <a href="#" class="guingcreabtn">创建</a>
+                            <a href="javascript:void(0);" onclick="" class="group-order-remove">删除</a>
+                            <a href="javascript:void(0);" onclick="$('#createCart').submit();" class="guingcreabtn">创建</a>
                         </div>
                     </div>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
         @include('member.partials.footer')
@@ -103,4 +106,7 @@
         {{--end隐藏部分--}}
         <div class="backTop"><a href="javascript:void(0);"></a></div>
     @endsection
+@section('scripts')
+    <script src="{{ asset('home/js/zclip/jquery.zclip.min.js') }}" type="text/javascript"></script>
+@endsection
 </body>

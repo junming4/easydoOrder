@@ -193,6 +193,7 @@ return [
          */
         App\Providers\AppBindServiceProvider::class, //绑定仓库
         Jenssegers\Date\DateServiceProvider::class, //日期插件
+        Barryvdh\Debugbar\ServiceProvider::class, //调试工具
 
     ],
 
@@ -250,6 +251,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'UUID' => Webpatser\Uuid\Uuid::class,
         'Date' => Jenssegers\Date\Date::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

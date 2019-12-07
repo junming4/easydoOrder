@@ -16,4 +16,8 @@ interface CollectionContract
 
     public function list(): array ;
 
+    public function find(int $col_id);
+
+    public function getInfo(int $stg_id, int $type = 0, array $where = []);
+
 }

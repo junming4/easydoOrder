@@ -4,17 +4,21 @@ namespace App\Http\Controllers\Home;
 
 use App\Repositories\Goods\GoodsContract;
 use App\Repositories\Store\StoreContract;
+use App\Repositories\TeamShop\TeamShopContract;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 
 class StoreController extends Controller
 {
     protected $storeContract;
     protected $goodsContract;
-    public function __construct(StoreContract $storeContract, GoodsContract $goodsContract)
+    protected $teamShopContract;
+    public function __construct(StoreContract $storeContract, GoodsContract $goodsContract, TeamShopContract $teamShopContract)
     {
          $this->storeContract = $storeContract;
          $this->goodsContract = $goodsContract;
+         $this->teamShopContract = $teamShopContract;
     }
 
 
@@ -26,11 +30,24 @@ class StoreController extends Controller
      * @auth 肖俊明<xiaojunming@eelly.net>
      * @since 2017年08月25日
      */
-    public function index($id)
+    public function index($id, $uuid = 0)
     {
         if ($id < 1) {
             return redirect(url('/'));
         }
+        $uuid = trim(addslashes($uuid));
+
+        if ($uuid > 0) {
+            $teamShop = $this->teamShopContract->findByUuid($uuid);
+            if (!empty($teamShop)) {
+                if($teamShop->store_id = $id){
+                    Cookie::make('isTeamShop_'.$id,$teamShop->ts_id, 3600);
+                }
+
+            }
+        }
+
+
         $store = $this->storeContract->storeInfo($id);
         if (empty($store)) {
             return redirect(url('/'));
@@ -39,6 +56,9 @@ class StoreController extends Controller
         if ($cateList->isEmpty()) {
             return redirect(url('/'));
         }
+
+        //是否
+        $store['isTeamShop'] =  Cookie::get('isTeamShop_'.$id, false);
 
         $list = [];
 

@@ -68,7 +68,7 @@ Route::group(['namespace' => 'Home'], function ($route) {
     $route->post('shop/createExtra',['as'=>'create','uses' => 'ShopController@createShopExtraInfo']);
     $route->post('shop/cart/add',['as'=>'create','uses' => 'ShopCartController@create']);
 
-    $route->get('store/{id?}',['as'=>'store','uses'=>'StoreController@index']);
+    $route->get('store/{id}/{uuid?}',['as'=>'store','uses'=>'StoreController@index']);
 
     //注册
     $route->get('register','Auth\RegisterController@showRegistrationForm');

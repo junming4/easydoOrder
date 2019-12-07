@@ -58,7 +58,7 @@ class GoodsRepository implements GoodsContract
      * @since 2017年08月25日
      */
     public function getList($store_id, $stcate_id = 0, $goods_state = -1, $where = array(), $bCount = false,
-                            $order_by = 'goods_id', $sort = 'DESC', $limits = '0,20', $fields = ['*'])
+                            $order_by = 'goods_id', $sort = 'DESC', $limits = '0,2', $fields = ['*'])
     {
         $store_id = (int)$store_id;
         $stcate_id = (int)$stcate_id;

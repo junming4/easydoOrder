@@ -49,5 +49,7 @@ class AppBindServiceProvider extends ServiceProvider
             'App\Repositories\Store\StoreRepository');//店铺类
         $this->app->bind('App\Repositories\Goods\GoodsContract',
             'App\Repositories\Goods\GoodsRepository');//商品类
+        $this->app->bind('App\Repositories\Collection\CollectionContract',
+            'App\Repositories\Collection\CollectionRepository');//收藏类
     }
 }

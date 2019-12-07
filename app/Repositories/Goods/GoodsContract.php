@@ -15,5 +15,5 @@ interface GoodsContract
     public function create(array $input): bool;
 
     public function getList($store_id, $stcate_id = 0, $goods_state = -1, $where = array(), $bCount = false,
-                            $order_by = 'goods_id', $sort = 'DESC', $limits = '0,20', $fields = ['*']);
+                            $order_by = 'goods_id', $sort = 'DESC', $limits = '0,2', $fields = ['*']);
 }

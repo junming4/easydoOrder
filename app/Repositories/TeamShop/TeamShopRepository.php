@@ -37,4 +37,17 @@ class TeamShopRepository implements TeamShopContract
     {
         return TeamShop::find($ts_id);
     }
+
+    /**
+     * findByUuid
+     *
+     * @param string $uuid
+     * @return mixed|static
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年08月30日
+     */
+    public function findByUuid(string $uuid)
+    {
+        return TeamShop::find(['uuid'=>$uuid]);
+    }
 }

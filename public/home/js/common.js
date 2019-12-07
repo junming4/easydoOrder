@@ -186,7 +186,7 @@ $(function() {
 	});
 
 	// productsList2.html dialog
-	$(".fp-dialog").fanDialog(".pl2storerom-close");
+	//$(".fp-dialog").fanDialog(".pl2storerom-close");
 
 	// productsList3.html 
 	$("#product-users-logout").on("click", function() {
@@ -255,14 +255,22 @@ $(function() {
 	//$(".expenresboxlist li a.epblbrrlast").parent().find(".expbformbox").show();
 	$(".expenresboxlist li a").each(function(i) {
 		$(this).on("click", function() {
+			var price  = $(this).attr('data-price');
 			$(".expbformbox").hide();
 			$(".expenresboxlist li").removeClass("expbliotherCur").eq(i).addClass("expbliotherCur");
 			$(".expenresboxlist li a").removeClass("epblbrrlast");
 			$(this).addClass("epblbrrlast");
 			$(this).parent().find(".expbformbox").show();
+
+			$("#expbformbtext").val(price);
 			return false;
 		});
 	});
+   /* $("#expbformbtext").val('kskks');
+    $(".expenresboxlist li a").on('click',function () {
+        var price  = $(this).attr('data-price');
+        //$("#expbformbtext").val('kskks');
+    });*/
 
 	if($(".check-status").is(".checkboxCur")) {
 		$(".check-status").parent().find("input").val("1");
@@ -447,7 +455,6 @@ $(function() {
 
 });
 
-;
 (function($) {
 
 	$.fn.fanDialog = function(btn, shade, fn) {

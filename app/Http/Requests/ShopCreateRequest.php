@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * ShopCreateRequest
@@ -68,12 +69,12 @@ class ShopCreateRequest extends FormRequest
     public function fillData()
     {
         return [
-            'user_id' => 1, //todo 暂时填写为1
+            'user_id' => Auth::user()->user_id,
             'uuid' => $this->uuid,
             'store_id' => $this->store_id,
             'team_time' => strtotime($this->team_time),
             'price' => $this->price *1,
-            'is_see' => isset($this->is_see) ? (int)$this->is_see : 0,
+            'is_see' => $this->is_see ??  0,
             'team_ids' => '',
             'status' => 0
         ];

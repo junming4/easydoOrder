@@ -13,7 +13,7 @@ namespace App\Repositories\Collection;
 
 use App\Models\Collection;
 
-class UserRepository implements CollectionContract
+class CollectionRepository implements CollectionContract
 {
 
 
@@ -34,4 +34,42 @@ class UserRepository implements CollectionContract
         return false;
     }
 
+    public function list(): array
+    {
+        // TODO: Implement list() method.
+    }
+
+    /**
+     * find
+     *
+     * @param int $col_id
+     * @return mixed|static
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年09月01日
+     */
+    public function find(int $col_id)
+    {
+        return Collection::find($col_id);
+    }
+
+    /**
+     * getInfo
+     *
+     * @param int $stg_id
+     * @param int $type
+     * @param array $where
+     * @return mixed|static
+     * @auth 肖俊明<xiaojunming@eelly.net>
+     * @since 2017年09月01日
+     */
+    public function getInfo(int $stg_id, int $type = 0, array $where = [])
+    {
+        if ($stg_id > 0) {
+            $where['stg_id'] = $stg_id;
+        }
+        if ($type >= 0) {
+            $where['type'] = $type;
+        }
+        return Collection::where($where)->get();
+    }
 }

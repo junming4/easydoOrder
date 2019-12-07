@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * ShopCartCreateRequest
@@ -33,6 +34,7 @@ class ShopCartCreateRequest extends FormRequest
         return [
             //
             'goods_id' => 'required|integer',
+            'store_id' => 'required|integer',
             'goods_name' => 'required',
             'goods_num' => 'required|integer',
             'price' => 'required'
@@ -50,6 +52,7 @@ class ShopCartCreateRequest extends FormRequest
     {
         return [
             'goods_id.required' => '必须填写“商品ID”。',
+            'store_id.required' => '必须填写“店铺ID”。',
             'goods_id.integer' => '必须填写“商品ID”。',
             'goods_name.required' => '必须填写“商品名”。',
             'goods_num.integer' => '必须填写“商品ID”。',
@@ -68,9 +71,11 @@ class ShopCartCreateRequest extends FormRequest
     {
         return [
             'goods_id' => $this->goods_id,
+            'store_id' => $this->store_id,
             'goods_name' => $this->goods_name,
             'goods_num' => $this->goods_num,
             'price' => $this->price,
+            'user_id' => Auth::user()->user_id,
             'options' => [], //todo 额外数据为空
         ];
     }

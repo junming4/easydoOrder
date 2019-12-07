@@ -513,3 +513,72 @@ $(function() {
 		$(".slifoSearch .listbox ").stop().fadeOut();
 	});
 });
+
+
+//  餐厅简介
+$(function() {
+	var Indexs = 0;
+
+	$("#ShopImage .Close").click(function() {
+		$("#ShopImage").hide();
+	});
+	$(".SuccShop .grid a").click(function() {
+		$("#ShopImage").fadeIn();
+		Indexs = $(this).index();
+
+		var src = $(this).find("img").attr("src");
+		//alert(src);
+		$("#ShopImage .Cons3 img.big").attr("src", src);
+	});
+	$("#ShopImage img.LQie").click(function() {
+		if(Indexs > 0) {
+			Indexs = Indexs - 1;
+			var src = $(".SuccShop .grid img").eq(Indexs).attr("src");
+			$("#ShopImage .Cons3 img.big").attr("src", src);
+		}
+	})
+	$("#ShopImage img.RQie").click(function() {
+		if(Indexs + 1 < $(".SuccShop .grid img").length) {
+			Indexs = Indexs + 1;
+			var src = $(".SuccShop .grid img").eq(Indexs).attr("src");
+			$("#ShopImage .Cons3 img.big").attr("src", src);
+		}
+	})
+})
+
+$(function() {
+
+	var h = Number($("#header").height()); // 头部的高度
+
+	$('.restubarcenLeft ul li a.go_1').click(function() {
+		$('html,body').animate({
+			scrollTop: $('#go_1').offset().top - h
+		}, 500);
+
+	});
+	$('.restubarcenLeft ul li a.go_2').click(function() {
+		$('html,body').animate({
+			scrollTop: $('#go_2').offset().top - h
+		}, 500);
+
+	});
+	$('.restubarcenLeft ul li a.go_3').click(function() {
+		$('html,body').animate({
+			scrollTop: $('#go_3').offset().top - h
+		}, 500);
+
+	});
+	$('.restubarcenLeft ul li a.go_4').click(function() {
+		$('html,body').animate({
+			scrollTop: $('#go_4').offset().top - h
+		}, 500);
+
+	});
+
+	$('.restubarcenLeft ul li a.go_5').click(function() {
+		$('html,body').animate({
+			scrollTop: $('#go_5').offset().top - h
+		}, 500);
+
+	});
+})

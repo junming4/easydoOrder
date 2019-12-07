@@ -67,12 +67,15 @@
                 @forelse ($item['goodsList'] as $goods)
                 <div class="plstlistbox">
                     <div class="plstlistboxpic">
-                        <a href="#"><img src="{{ $goods->goods_image }}" alt="" /></a>
-                        <div class="plstboxpicopacity"><a href="#"></a></div>
+                        <a href="javascript:void(0);"><img src="{{ $goods->goods_image }}" alt="" /></a>
+                        <div class="plstboxpicopacity">
+                            <a href="javascript:void(0);" data-id="{{ $goods->goods_id }}"
+                               data-price="{{ $goods->goods_price }}" data-goods-name="{{ $goods->goods_name }}"></a>
+                        </div>
                     </div>
                     <div class="plstlistboxnamedd">
                         <div class="plstnamddtop">
-                            <span><a href="#">{{ $goods->goods_name }}</a></span>
+                            <span><a href="javascript:void(0);">{{ $goods->goods_name }}</a></span>
                             <strong><b>￥</b>{{ $goods->goods_price }}</strong>
                         </div>
                         <div class="plstnamddbom">
@@ -91,9 +94,19 @@
     </div>
 
     @include('home.partials.footer')
+    @include('home.partials.addCartMsg');
+
+    {{--隐藏整个数据--}}
+    <input type="hidden" id="store_id" value="{{ $store->store_id }}">
+    <input type="hidden" id="cartUrl" value="{{ route('member.shopping.create') }}">
+    <input type="hidden" id="collectUrl" value="{{ route('member.collection.create') }}">
 
     <div class="backTop">
         <a href="javascript:void(0);"></a>
     </div>
     </body>
 @endsection
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('home/js/component/addCart.js') }}"></script>
+@endsection
+
